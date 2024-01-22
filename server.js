@@ -65,6 +65,10 @@ app.post("/generate", async (req, res) => {
   }
 });
 
+app.get('/',(req,res)=>{
+  res.send("Hello")
+})
+
 app.listen(port, () => {
   console.log(`Server started on ${port}`);
 });
