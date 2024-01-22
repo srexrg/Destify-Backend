@@ -38,6 +38,7 @@ app.post("/generate", async (req, res) => {
       });
 
       await user.save();
+    }
 
       const data = await fetchData(preferences, budget, numTravelers, month);
 
@@ -56,7 +57,6 @@ app.post("/generate", async (req, res) => {
         await newPost.save();
         res.send({ data });
       }
-    }
   } catch (error) {
     console.log(error);
     res.status(500).json({
