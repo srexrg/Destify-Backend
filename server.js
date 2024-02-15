@@ -8,7 +8,12 @@ import "dotenv/config";
 const app = express();
 const port = process.env.PORT || 3001;
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, {
+  poolSize: 10,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 
 app.use(cors());
 app.use(bodyParser.json());
