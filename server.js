@@ -9,10 +9,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGO_URL, {
-  poolSize: 10,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  maxPoolSize: 10 
 });
+
 
 
 app.use(cors());
