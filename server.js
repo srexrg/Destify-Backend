@@ -4,17 +4,17 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import "dotenv/config";
+import job from "./cron.js";
 
 const app = express();
 const port = process.env.PORT || 3001;
+job.start();
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  maxPoolSize: 10 
+  maxPoolSize: 10,
 });
-
-
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -55,9 +55,9 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-app.get('/',(req,res)=>{
-  res.send("Hello")
-})
+// app.get('/',(req,res)=>{
+//   res.send("Hello")
+// })
 
 app.listen(port, () => {
   console.log(`Server started on ${port}`);
