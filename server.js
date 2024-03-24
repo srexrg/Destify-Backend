@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 app.use(cors());
+
 app.use(bodyParser.json());
 
 const Post = mongoose.model("Post", {
