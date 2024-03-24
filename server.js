@@ -8,7 +8,7 @@ import job from "./cron.js";
 
 const app = express();
 const port = process.env.PORT || 3001;
-job.start();
+// job.start();
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
@@ -55,9 +55,9 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-// app.get('/',(req,res)=>{
-//   res.send("Hello")
-// })
+app.get('/',(req,res)=>{
+  res.send("Hello")
+})
 
 app.listen(port, () => {
   console.log(`Server started on ${port}`);
