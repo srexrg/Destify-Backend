@@ -1,6 +1,6 @@
 import cron from 'cron';
 
-const backendUrl = "https://destify-backend.onrender.com/generate";
+const backendUrl = "https://destify-backend.vercel.app/generate";
 
 const job = new cron.CronJob('*/14 * * * *', async () => {
   try {
