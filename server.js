@@ -8,7 +8,6 @@ import job from "./cron.js";
 
 const app = express();
 const port = process.env.PORT || 3001;
-// job.start();
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
@@ -16,7 +15,10 @@ mongoose.connect(process.env.MONGO_URL, {
   maxPoolSize: 10,
 });
 
-app.use(cors());
+app.use(cors({
+  origin:"https://destify.vercel.app",
+  methods:["GET","POST","PUT","DELETE","PATCH","OPTIONS"]
+}));
 
 app.use(bodyParser.json());
 
