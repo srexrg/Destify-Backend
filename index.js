@@ -1,5 +1,8 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import "dotenv/config";
+
+
+
 
 async function fetchData(preferences, budget, numTravelers, month,currency) {
   const prompt = `
@@ -14,15 +17,16 @@ async function fetchData(preferences, budget, numTravelers, month,currency) {
   `;
   
 
-  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY});
 
   try {
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    const text = response.text();
-    const res = text;
-    return res;
+    const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash-preview-05-20",
+    contents: prompt,
+  });
+    console.log(response);
+
+  return response.text;
   } catch (error) {
     console.log(error);
     throw error;

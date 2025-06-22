@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 
 app.post("/generate", async (req, res) => {
   const { preferences, budget, numTravelers, month } = req.body;
+  console.log(req.body);
 
   try {
     const data = await fetchData(preferences, budget, numTravelers, month);
