@@ -15,7 +15,7 @@ async function fetchData(preferences, budget, numTravelers, month,currency) {
   
 
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
 
   try {
     const result = await model.generateContent(prompt);
